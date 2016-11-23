@@ -1,7 +1,7 @@
-Nested loops, multidimensional arrays and "strings"
+Multidimensional arrays, dynamic memmory and pointers
 =====================
 
-##Task1: Basic matrix operations
+##Task: Basic matrix operations
 Write a program which asks the user to enter two integers: "m" and "n". After that ask him to enter the elements of a matrix A with "m" rows and "n" columns.
 
 The next step, for your program, is to transpose the matrix (matrix B). Now multitply the two matrices and display the sum of the elements located at the main anti-diagonal of the resulted matrix.
