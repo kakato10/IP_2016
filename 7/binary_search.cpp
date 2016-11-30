@@ -1,49 +1,50 @@
+#include <iostream>
+
 using namespace std;
 
-#include <iostream>
+int temp = 41;
 
 int main()
 {
-	const int ARR_SIZE = 5;
-	
-	//a sorted array
-	int arr[ARR_SIZE] = { 4, 8, 10, 15, 17 };
+	const int INITIAL_INDEX = 0,
+		ARR_SIZE = 10;
+	int arr[ARR_SIZE] = { 0, 5, 12, 39, 52, 64, 76, 83, 92, 105 };
 
-	int start = 0,
-		end = ARR_SIZE,
-		searched = 15,
-		index = (end + start) / 2,
-		counter = 1;
+	int searched;
+	cout << "Insert an element to search: ";
+	cin >> searched;
 
-	while (arr[index] != searched)
-	{
-		if (start == end)
+	int start = INITIAL_INDEX,
+		end = ARR_SIZE;
+
+	int index = NULL;
+
+	do {
+		int middle = (start + end) / 2;
+		//check bounds
+		cout << start << " " << end << endl;
+		if (arr[middle] == searched)
 		{
-			//element was nout found end the program
-			cout << "Element not found" << endl;
-			system("pause");
-			return 1;
+			//element found
+			index = middle;
 		}
-		else if (arr[index] < searched) 
+		else if (arr[middle] < searched)
 		{
-			//remove left part of the array
-			start = index + 1;
+			//we don't need to check the elements to the left
+			start = middle + 1;
 		}
-		else if (arr[index] > searched)
+		else
 		{
-			//remove right part of the array
-			end = index - 1;
+			//we don't need to check the elements to the right
+			end = middle - 1;
 		}
+	} while (!index && start <= end);
 
-		//get the index of the next middle element
-		index = (end + start) / 2;
+	if (index)
+		cout << "Element " << searched << " was found at index " << index << "." << endl;
+	else
+		cout << "Element was not found." << endl;
 
-		counter++;
-	}
-	
-	cout << "Searched element " << searched << " was found at index " << index << endl;
-	cout << "Steps needed to find the element: " << counter << endl;
-	
-	system("pause");
 	return 0;
 }
+
